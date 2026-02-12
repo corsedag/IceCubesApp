@@ -78581,6 +78581,29 @@
         }
       }
     },
+    "status.summary.reading-time %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld min read"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld min read"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "status.visibility.public" : {
       "extractionState" : "manual",
       "localizations" : {

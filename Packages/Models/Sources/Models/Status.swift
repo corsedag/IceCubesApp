@@ -90,6 +90,16 @@ public final class Status: AnyStatus, Codable, Identifiable, Equatable, Hashable
     mediaAttachments.map { .init(status: self, attachment: $0) }
   }
 
+  /// Estimated reading time in minutes, based on ~238 WPM average.
+  /// Returns nil if the post is short enough to not warrant a label (< 1 min).
+  public var estimatedReadingTimeMinutes: Int? {
+    let text = reblog?.content.asRawText ?? content.asRawText
+    let wordCount = text.split(omittingEmptySubsequences: true, whereSeparator: { $0.isWhitespace })
+      .count
+    let minutes = Int(ceil(Double(wordCount) / 238.0))
+    return minutes >= 1 ? minutes : nil
+  }
+
   public init(
     id: String, content: HTMLString, account: Account, createdAt: ServerDate, editedAt: ServerDate?,
     reblog: ReblogStatus?, mediaAttachments: [MediaAttachment], mentions: [Mention],

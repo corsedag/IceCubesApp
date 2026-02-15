@@ -22,6 +22,10 @@ struct StatusRowDetailView: View {
             + Text(viewModel.status.createdAt.asDate, style: .time) + Text("  ·")
           Image(systemName: viewModel.status.visibility.iconName)
             .accessibilityHidden(true)
+          if let readingTime = viewModel.status.estimatedReadingTimeMinutes {
+            Text("  ·")
+            Text("status.summary.reading-time \(readingTime)")
+          }
         }.accessibilityElement(children: .combine)
         Spacer()
         if let name = viewModel.status.application?.name,
